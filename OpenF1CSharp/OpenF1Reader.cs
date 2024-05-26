@@ -7,8 +7,8 @@ public class OpenF1Reader : IDisposable
 	{
 		client = new HttpClient();
 	}
-	
-	private async Task<string> Query(string url)
+
+    public async Task<string> Query(string url)
 	{
 		try
 		{

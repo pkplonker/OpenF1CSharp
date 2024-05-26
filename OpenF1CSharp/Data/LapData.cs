@@ -4,11 +4,11 @@ namespace OpenF1CSharp;
 
 public struct LapData
 {
-	[JsonProperty("meeting_key")] public int MeetingKey { get; set; }
+	[JsonProperty("meeting_key")] public int? MeetingKey { get; set; }
 
-	[JsonProperty("session_key")] public int SessionKey { get; set; }
+	[JsonProperty("session_key")] public int? SessionKey { get; set; }
 
-	[JsonProperty("driver_number")] public int DriverNumber { get; set; }
+	[JsonProperty("driver_number")] public int? DriverNumber { get; set; }
 
 	[JsonProperty("i1_speed")] public int? I1Speed { get; set; }
 
@@ -20,7 +20,7 @@ public struct LapData
 
 	[JsonProperty("lap_duration")] public double? LapDuration { get; set; }
 
-	[JsonProperty("is_pit_out_lap")] public bool IsPitOutLap { get; set; }
+	[JsonProperty("is_pit_out_lap")] public bool? IsPitOutLap { get; set; }
 
 	[JsonProperty("duration_sector_1")] public double? DurationSector1 { get; set; }
 
@@ -34,5 +34,5 @@ public struct LapData
 
 	[JsonProperty("segments_sector_3")] public List<int?> SegmentsSector3 { get; set; }
 
-	[JsonProperty("lap_number")] public int LapNumber { get; set; }
+	[JsonProperty("lap_number")] public int? LapNumber { get; set; }
 }
