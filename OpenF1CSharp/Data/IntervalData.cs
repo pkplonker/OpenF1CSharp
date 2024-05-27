@@ -3,7 +3,7 @@
 namespace OpenF1CSharp;
 
 
-public struct RaceData
+public struct IntervalData
 {
 	[JsonProperty("date")]
 	public DateTime? Date { get; set; }
