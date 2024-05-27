@@ -1,6 +1,6 @@
 ### Features
 
-- C# Client Library for OpenAI;
+- C# Client Library for OpenF1;
 - 1:1 Mapping with available data;
 - Easy builder pattern query construction
 - Data objects for each query
