@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Newtonsoft.Json;
+using OpenF1CSharp;
 
 public enum ComparisonOperator
 {
@@ -63,16 +64,32 @@ public class QueryBuilder<T>
 
 	private string GetFilterString<TValue>(string propertyName, TValue value, ComparisonOperator op)
 	{
+		string stringValue = value.ToString();
+		
+		if (value is DateTime dateTime)
+		{
+			stringValue = FormatDateTime(dateTime);
+		}
+
 		return op switch
 		{
-			ComparisonOperator.Equal => $"{propertyName}={value}",
-			ComparisonOperator.GreaterThan => $"{propertyName}>{value}",
-			ComparisonOperator.GreaterThanOrEqual => $"{propertyName}>={value}",
-			ComparisonOperator.LessThan => $"{propertyName}<{value}",
-			ComparisonOperator.LessThanOrEqual => $"{propertyName}<={value}",
+			ComparisonOperator.Equal => $"{propertyName}={stringValue}",
+			ComparisonOperator.GreaterThan => $"{propertyName}>{stringValue}",
+			ComparisonOperator.GreaterThanOrEqual => $"{propertyName}>={stringValue}",
+			ComparisonOperator.LessThan => $"{propertyName}<{stringValue}",
+			ComparisonOperator.LessThanOrEqual => $"{propertyName}<={stringValue}",
 			_ => throw new ArgumentException("Invalid comparison operator")
 		};
 	}
-	
-	
+
+	public static string FormatDateTime<TValue>(TValue value)
+	{
+		ArgumentNullException.ThrowIfNull(value);
+		if (value is DateTime dateTime)
+		{
+			return dateTime.ToString("yyyy-MM-ddTHH:mm:ss.fff");
+		}
+
+		return value?.ToString() ?? string.Empty;
+	}
 }

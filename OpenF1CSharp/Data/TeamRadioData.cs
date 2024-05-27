@@ -2,7 +2,7 @@
 
 namespace OpenF1CSharp;
 
-public struct TeamRadio
+public struct TeamRadioData
 {
 	[JsonProperty("date")]
 	public DateTime? Date { get; set; }
