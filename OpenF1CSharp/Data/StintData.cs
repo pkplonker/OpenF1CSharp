@@ -2,7 +2,7 @@
 
 namespace OpenF1CSharp;
 
-public struct TyreStint
+public struct StintData
 {
 	[JsonProperty("compound")]
 	public string? Compound { get; set; }
