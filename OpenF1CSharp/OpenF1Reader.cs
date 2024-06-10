@@ -1,28 +1,35 @@
-﻿namespace OpenF1CSharp;
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
-public class OpenF1Reader : IDisposable
+namespace OpenF1CSharp
 {
-	private readonly HttpClient client;
-	public OpenF1Reader()
+	public class OpenF1Reader : IDisposable
 	{
-		client = new HttpClient();
-	}
+		private readonly HttpClient client;
 
-    public async Task<string> Query(string url)
-	{
-		try
+		public OpenF1Reader()
 		{
-			var response = await client.GetAsync(url);
-			response.EnsureSuccessStatusCode();
-			return await response.Content.ReadAsStringAsync();
+			client = new HttpClient();
 		}
-		catch (HttpRequestException e)
+
+		public async Task<string> Query(string url)
 		{
-			throw; 
+			try
+			{
+				var response = await client.GetAsync(url);
+				response.EnsureSuccessStatusCode();
+				return await response.Content.ReadAsStringAsync();
+			}
+			catch (HttpRequestException e)
+			{
+				throw;
+			}
 		}
-	}
-	public void Dispose()
-	{
-		client.Dispose();
+
+		public void Dispose()
+		{
+			client.Dispose();
+		}
 	}
 }

@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json;
 using OpenF1CSharp;
 
@@ -65,7 +68,7 @@ public class QueryBuilder<T>
 	private string GetFilterString<TValue>(string propertyName, TValue value, ComparisonOperator op)
 	{
 		string stringValue = value.ToString();
-		
+
 		if (value is DateTime dateTime)
 		{
 			stringValue = FormatDateTime(dateTime);
@@ -84,7 +87,11 @@ public class QueryBuilder<T>
 
 	public static string FormatDateTime<TValue>(TValue value)
 	{
-		ArgumentNullException.ThrowIfNull(value);
+		if (value == null)
+		{
+			throw new ArgumentNullException(nameof(value));
+		}
+
 		if (value is DateTime dateTime)
 		{
 			return dateTime.ToString("yyyy-MM-ddTHH:mm:ss.fff");

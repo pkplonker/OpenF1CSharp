@@ -1,31 +1,30 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
-namespace OpenF1CSharp;
-
-
-public struct LocationData
+namespace OpenF1CSharp
 {
-	[JsonProperty("circuit_key")]
-	public int? CircuitKey { get; set; }
+	public struct LocationData
+	{
+		[JsonProperty("date")]
+		public DateTime? Date { get; set; }
 
-	[JsonProperty("circuit_name")]
-	public string? CircuitName { get; set; }
+		[JsonProperty("driver_number")]
+		public string? DriverNumber { get; set; }
 
-	[JsonProperty("country_code")]
-	public string? CountryCode { get; set; }
+		[JsonProperty("meeting_key")]
+		public string? MeetingKey { get; set; }
 
-	[JsonProperty("country_key")]
-	public int? CountryKey { get; set; }
+		[JsonProperty("session_key")]
+		public int? SessionKey { get; set; }
 
-	[JsonProperty("country_name")]
-	public string? CountryName { get; set; }
+		[JsonProperty("x")]
+		public int? X { get; set; }
 
-	[JsonProperty("latitude")]
-	public double? Latitude { get; set; }
+		[JsonProperty("y")]
+		public int? Y { get; set; }
 
-	[JsonProperty("longitude")]
-	public double? Longitude { get; set; }
-
-	[JsonProperty("location")]
-	public string? Location { get; set; }
+		[JsonProperty("z")]
+		public int? Z { get; set; }
+	}
 }
+

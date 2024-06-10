@@ -1,5 +1,9 @@
 ﻿namespace OpenF1CSharp
 {
+	public interface IBaseQuery
+	{
+		
+	}
 	public abstract class BaseQuery<T>
 	{
 		protected readonly QueryBuilder<T> QueryBuilder;
