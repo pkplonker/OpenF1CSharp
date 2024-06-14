@@ -13,10 +13,10 @@ namespace OpenF1CSharp
 		public int? DriverNumber { get; set; }
 
 		[JsonProperty("gap_to_leader")]
-		public double? GapToLeader { get; set; }
+		public string GapToLeader { get; set; }
 
 		[JsonProperty("interval")]
-		public double? Interval { get; set; }
+		public string Interval { get; set; }
 
 		[JsonProperty("meeting_key")]
 		public int? MeetingKey { get; set; }
